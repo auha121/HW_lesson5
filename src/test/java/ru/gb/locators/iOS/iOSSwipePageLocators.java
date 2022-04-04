@@ -10,18 +10,6 @@ public class iOSSwipePageLocators implements SwipePageLocators {
         return MobileBy.xpath("//android.view.ViewGroup[@content-desc=\"Carousel\"]/android.view.ViewGroup["+ swipe_number + "]/android.view.ViewGroup");
     }
 
-    /*public By swipeButton1() {
-        return MobileBy.xpath("//android.view.ViewGroup[@content-desc=\"Carousel\"]/android.view.ViewGroup[1]/android.view.ViewGroup");
-    }
-
-    public By swipeButton2() {
-        return MobileBy.xpath("//android.view.ViewGroup[@content-desc=\"Carousel\"]/android.view.ViewGroup[2]");
-    }
-
-    public By swipeButton3() {
-        return MobileBy.xpath("//android.view.ViewGroup[@content-desc=\"Carousel\"]/android.view.ViewGroup[3]/android.view.ViewGroup");
-    }*/
-
     public By swipeScreen() {
         return MobileBy.AccessibilityId("Swipe-screen");
     }

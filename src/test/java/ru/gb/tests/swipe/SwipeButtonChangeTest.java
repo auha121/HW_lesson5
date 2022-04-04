@@ -14,12 +14,10 @@ public class SwipeButtonChangeTest extends BaseTest {
     public void swipeButtonChange() {
         openApp()
                 .clickSwipeButton()
+                .clickSwipeFirstChange()
                 .clickSwipeButtonChange(2)
                 .clickSwipeButtonChange(3)
                 .clickSwipeButtonChange(1);
-                /*.clickSwipeButtonChange2()
-                .clickSwipeButtonChange3()
-                .clickSwipeButtonChange1()*/
     }
 
 }

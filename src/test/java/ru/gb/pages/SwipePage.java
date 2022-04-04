@@ -1,24 +1,45 @@
 package ru.gb.pages;
 
+import com.codeborne.selenide.WebDriverRunner;
 import com.github.romankh3.image.comparison.ImageComparison;
 import com.github.romankh3.image.comparison.ImageComparisonUtil;
 import com.github.romankh3.image.comparison.model.ImageComparisonResult;
 import com.github.romankh3.image.comparison.model.ImageComparisonState;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import ru.gb.locators.LocatorService;
 import ru.gb.locators.interfaces.SwipePageLocators;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.assertEquals;
 
-public class SwipePage {
+public class SwipePage{
 
     // Метод позволяет работать с локаторами для нужной нам страницы.
     private SwipePageLocators locator() {
         return LocatorService.SWIPE_PAGE_LOCATORS;
+    }
+
+    @Step("Первое движение Swipe")
+    public SwipePage clickSwipeFirstChange() {
+        WebDriver driver = WebDriverRunner.getWebDriver();
+        new TouchAction((PerformsTouchActions) driver)
+                // Точка куда нажимаем и держим
+                .press(PointOption.point(540, 1080))
+                //  Время удержания
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                // Точка куда движется свайп
+                .moveTo(PointOption.point(50,1080))
+                .release().perform();
+        return this;
     }
 
     @Step("Swipe в положении {swipe_number}")
@@ -26,24 +47,6 @@ public class SwipePage {
         $(locator().swipeButton(swipe_number)).click();
         return this;
     }
-
-    /*@Step("Swipe в положении 1")
-    public SwipePage clickSwipeButtonChange1() {
-        $(locator().swipeButton1()).click();
-        return new SwipePage();
-    }
-
-    @Step("Swipe в положении 2")
-    public SwipePage clickSwipeButtonChange2() {
-        $(locator().swipeButton2()).click();
-        return new SwipePage();
-    }
-
-    @Step("Swipe в положении 3")
-    public SwipePage clickSwipeButtonChange3() {
-        $(locator().swipeButton3()).click();
-        return new SwipePage();
-    }*/
 
     @Step("Делаем скриншот {imageName} страницы и сравниваем с требованием.")
     public SwipePage checkScreenshot(String imageName, String methodName) {

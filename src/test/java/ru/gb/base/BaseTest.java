@@ -11,11 +11,11 @@ import ru.gb.pages.MainPage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 import static com.codeborne.selenide.Selenide.close;
 
 // базовый класс для всех будущих тестов
 public class BaseTest {
-
     // метод, который будет открывать наше приложение на телефоне
     public MainPage openApp() {
         WebDriver driver = null;
