@@ -1,5 +1,6 @@
 package ru.gb.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.romankh3.image.comparison.ImageComparison;
 import com.github.romankh3.image.comparison.ImageComparisonUtil;
@@ -18,7 +19,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
 
 public class SwipePage{
@@ -30,6 +31,7 @@ public class SwipePage{
 
     @Step("Первое движение Swipe")
     public SwipePage clickSwipeFirstChange() {
+        $(locator().swipeButton(1)).waitUntil(Condition.visible, 1000);
         WebDriver driver = WebDriverRunner.getWebDriver();
         new TouchAction((PerformsTouchActions) driver)
                 // Точка куда нажимаем и держим

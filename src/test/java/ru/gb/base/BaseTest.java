@@ -11,8 +11,7 @@ import ru.gb.pages.MainPage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.*;
 
 // базовый класс для всех будущих тестов
 public class BaseTest {
